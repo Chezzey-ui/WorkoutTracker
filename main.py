@@ -6,15 +6,15 @@ today = datetime.today().strftime('%d/%m/%Y')
 current_time = datetime.now().strftime('%H:%M:%S')
 
 url = "https://app.100daysofpython.dev/v1/nutrition/natural/exercise"
-SHEET_ENDPOINT = os.environ.get(MY_SHEET_ENDPOINT)
+SHEET_ENDPOINT = os.environ.get("MY_SHEET_ENDPOINT")
 
-API_KEY = os.environ.get(MY_API_KEY)
-APP_ID = os.environ.get(MY_APP_ID)
+API_KEY = os.environ.get("MY_API_KEY")
+APP_ID = os.environ.get("MY_APP_ID")
 
-GENDER = os.environ.get(MY_GENDER)
-AGE = os.environ.get(MY_AGE)
-WEIGHT_KG = os.environ.get(MY_WEIGHT_KG)
-HEIGHT_CM = os.environ.get(MY_HEIGHT_CM)
+GENDER = os.environ.get("MY_GENDER")
+AGE = os.environ.get("MY_AGE")
+WEIGHT_KG = os.environ.get("MY_WEIGHT_KG")
+HEIGHT_CM = os.environ.get("MY_HEIGHT_CM")
 
 headers1 = {
     "Content-Type": "application/json",
@@ -33,7 +33,7 @@ data = {
 response = requests.post(url, headers = headers1, json = data)
 result = response.json()
 
-BEARER_TOKEN = os.environ.get(MY_BEARER_TOKEN)
+BEARER_TOKEN = os.environ.get("MY_BEARER_TOKEN")
 
 headers2 = {"Authorization": "Bearer "+BEARER_TOKEN}
 
