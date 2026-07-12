@@ -27,13 +27,12 @@ jobs:
         env:
           # Your secrets are available as environment variables
           # Add more secrets in Settings > Secrets > Actions
-          MY_EMAIL: ${{ secrets.MY_EMAIL }} 
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }} 
-          MY_API_KEY: ${{ secrets.MY_API_KEY }} 
-          MY_PHONE: ${{ secrets.MY_PHONE }} 
-          MY_SEND_PHONE: ${{ secrets.MY_SEND_PHONE }} 
-          MY_ACCOUNT_SID: ${{ secrets.MY_ACCOUNT_SID }} 
-          MY_AUTH_TOKEN: ${{ secrets.MY_AUTH_TOKEN }} 
-          MY_LAT: ${{ secrets.MY_LAT }} 
-          MY_LONG: ${{ secrets.MY_LONG }}
+          MY_GENDER: ${{ secrets.MY_GENDER }}
+          MY_SHEET_ENDPOINT: ${{ secrets.MY_SHEET_ENDPOINT }}
+          MY_API_KEY: ${{ secrets.MY_API_KEY }}
+          MY_APP_ID: ${{ secrets.MY_APP_ID }}
+          MY_BEARER_TOKEN: ${{ secrets.MY_BEARER_TOKEN }}
+          MY_AGE: ${{ secrets.MY_AGE }}
+          MY_WEIGHT_KG: ${{ secrets.MY_WEIGHT_KG }}
+          MY_HEIGHT_CM: ${{ secrets.MY_HEIGHT_CM }}
         run: python main.py
