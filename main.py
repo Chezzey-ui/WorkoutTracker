@@ -33,7 +33,7 @@ data = {
 response = requests.post(url, headers = headers1, json = data)
 result = response.json()
 
-BEARER_TOKEN = "AAAAAAAAAAAASNJNKJSFNJKSoek,sjndfs(1029>/s;dko2jkjads[df]sd'r=+gfdgfiji%%%slkfds"
+BEARER_TOKEN = os.environ.get(MY_BEARER_TOKEN)
 
 headers2 = {"Authorization": "Bearer "+BEARER_TOKEN}
 
