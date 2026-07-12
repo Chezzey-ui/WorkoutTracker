@@ -23,7 +23,7 @@ headers1 = {
 }
 
 data = {
-    "query" : input("What exercise did you do?: "),
+    "query" : "Jogged for 10 min",
     "weight_kg": WEIGHT_KG,
     "height_cm": HEIGHT_CM,
     "age": AGE,
