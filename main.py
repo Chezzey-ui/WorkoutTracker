@@ -12,9 +12,9 @@ API_KEY = os.environ.get("MY_API_KEY")
 APP_ID = os.environ.get("MY_APP_ID")
 
 GENDER = os.environ.get("MY_GENDER")
-AGE = os.environ.get("MY_AGE")
-WEIGHT_KG = os.environ.get("MY_WEIGHT_KG")
-HEIGHT_CM = os.environ.get("MY_HEIGHT_CM")
+AGE = int(os.environ.get("MY_AGE"))
+WEIGHT_KG = int(os.environ.get("MY_WEIGHT_KG"))
+HEIGHT_CM = int(os.environ.get("MY_HEIGHT_CM"))
 
 headers1 = {
     "Content-Type": "application/json",
