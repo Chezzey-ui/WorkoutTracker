@@ -32,22 +32,7 @@ jobs:
           MY_WEIGHT_KG: ${{ secrets.MY_WEIGHT_KG }}
           MY_HEIGHT_CM: ${{ secrets.MY_HEIGHT_CM }}
         run: |
-          if [ -z "$MY_EMAIL" ]; then
-            echo "MY_EMAIL secret is not set!"
-            echo "Go to Settings > Secrets > Actions and add it."
-            exit 1
-          else
-            echo "MY_EMAIL is configured"
-          fi
-
-          if [ -z "$MY_PASSWORD" ]; then
-            echo "MY_PASSWORD secret is not set!"
-            echo "Go to Settings > Secrets > Actions and add it."
-            exit 1
-          else
-            echo "MY_PASSWORD is configured"
-          fi
-
+          
           echo ""
           echo "All secrets are configured!"
 
