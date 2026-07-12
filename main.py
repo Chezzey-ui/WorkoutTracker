@@ -33,6 +33,11 @@ data = {
 response = requests.post(url, headers = headers1, json = data)
 result = response.json()
 
+if "exercises" not in result:
+    print(f"API Error: {result}")
+    print(f"Status Code: {response.status_code}")
+    exit(1)
+
 BEARER_TOKEN = os.environ.get("MY_BEARER_TOKEN")
 
 headers2 = {"Authorization": "Bearer "+BEARER_TOKEN}
