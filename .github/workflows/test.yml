@@ -1,1 +1,84 @@
+name: Test Setup
 
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check secrets are configured
+        env:
+          MY_GENDER: ${{ secrets.MY_GENDER }}
+          MY_SHEET_ENDPOINT: ${{ secrets.MY_SHEET_ENDPOINT }}
+          MY_API_KEY: ${{ secrets.MY_API_KEY }}
+          MY_APP_ID: ${{ secrets.MY_APP_ID }}
+          MY_BEARER_TOKEN: ${{ secrets.MY_BEARER_TOKEN }}
+          MY_AGE: ${{ secrets.MY_AGE }}
+          MY_WEIGHT_KG: ${{ secrets.MY_WEIGHT_KG }}
+          MY_HEIGHT_CM: ${{ secrets.MY_HEIGHT_CM }}
+        run: |
+          if [ -z "$MY_EMAIL" ]; then
+            echo "MY_EMAIL secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "MY_EMAIL is configured"
+          fi
+
+          if [ -z "$MY_PASSWORD" ]; then
+            echo "MY_PASSWORD secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "MY_PASSWORD is configured"
+          fi
+
+          echo ""
+          echo "All secrets are configured!"
+
+      - name: Check required files exist
+        run: |
+          echo "Checking for required files..."
+
+          if [ -f "main.py" ]; then
+            echo "main.py found"
+          else
+            echo "main.py not found!"
+            exit 1
+          fi
+
+          if [ -f "requirements.txt" ]; then
+            echo "requirements.txt found"
+          else
+            echo "requirements.txt not found!"
+            exit 1
+          fi
+
+          echo ""
+          echo "All required files found!"
+
+      - name: Test Python syntax
+        run: python -m py_compile main.py && echo "Python syntax OK"
+
+      - name: Success
+        run: |
+          echo ""
+          echo "========================================"
+          echo "  All checks passed!"
+          echo "  Your setup is ready to go."
+          echo "========================================"
